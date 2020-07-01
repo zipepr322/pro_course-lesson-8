@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Имеем функцию getPerson(name, from, to) которая возвращает объект {name: name, age: Math.random()}
+        // Создать массив из 5 таких объектов. Найти средний возраст и самого старшего человека.
+        // Вынести людей с одинаковым именем в отдельный массив.
+
+
+    function GetPerson(name, from, to){
+        let min=from,
+            max=to;
+        this.name=name;
+        this.age=Math.round(Math.random()*(max - min) + min);
+        return this
+    }
+
+    objectsArray=[ new GetPerson('Dog',40,80),
+                   new GetPerson('Rabbit',20,80),
+                   new GetPerson('Dog',1,15),
+                   new GetPerson('Cat',1,20),
+                   new GetPerson('Fox',1,10),
+                   new GetPerson('Fox',30,120),
+                   new GetPerson('Dog',20,80)];
+
+
+
+            for(i=0,elder=0,sameNameObjects=[],ageSumm=0,averageAge=0; i<objectsArray.length ; i++){
+                 anchor:for ( key in objectsArray[i]){
+                        if(typeof objectsArray[i][key]==="number"){
+                            ageSumm=ageSumm+objectsArray[i][key];
+                            if (objectsArray[i][key]>elder){
+                                elder=objectsArray[i][key]
+                            }
+                        }
+                        else if ( key ==='name'){
+                            for (k=0; k<objectsArray.length; k++){
+                                if (objectsArray[k][key] === objectsArray[i][key] && i !== k ){
+                                    sameNameObjects.push(objectsArray[i]);
+                                    continue anchor
+                                }
+                            }
+                        }
+
+              }
+                averageAge=Math.round(ageSumm/objectsArray.length);
+        }
+console.log(ageSumm+'       сумма всех возростов');
+console.log(objectsArray);
+console.log(averageAge+"      средний возраст");
+console.log(sameNameObjects);
+console.log(elder+'        самый взрослый чувак')
+
+
+    </script>
+</body>
+</html>
